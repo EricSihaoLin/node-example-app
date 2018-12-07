@@ -20,7 +20,6 @@ function compile(str, path) {
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
 app.enable('trust proxy');
-app.use(express.logger('dev'))
 app.use(stylus.middleware(
   { src: __dirname + '/public'
   , compile: compile
@@ -43,7 +42,7 @@ app.listen(3000)
 if(process.argv[2] == "dev"){
   console.log("DEBUG Express server running on port 3000")
   environment = "DEV"
-}else if(process.argv[2] == "prod"){
+}else{
   console.log("PRODUCTION Express server running on port 3000")
   environment = "PROD"
 }
